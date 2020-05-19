@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>検索結果</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      
+    </thead>
+    <tbody>
+      <tr>
+          <% @users.each do |user| %>
+          <td><%= user.name %></td>
+          <td></td>
+          <% end %>
+  
+      </tr>
+    </tbody>
+  </table>
+</div>
