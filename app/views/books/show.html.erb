@@ -2,10 +2,31 @@
 	<div class="row">
 		<div class="col-xs-3">
 
+			<h2>User info</h2>
+			<%= render 'users/profile', user: @user %>
+
+			<h2>New book</h2>
+			<%= render 'books/newform', book: @onebook %>
+
 		</div>
 
 		<div class="col-xs-9">
+			<h2>Book detail</h2>
 
+			<table class="table">
+				<tr>
+					<td><%= link_to user_path(@user) do %>
+							<%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
+							<%= @user.name %>
+						<% end %>
+					</td>
+
+					<td><%= link_to @book.title, book_path(@book) %></td>
+
+					<td><%= @book.body %></td>
+					
+
+				</tr>
 
 		</div>
 
