@@ -38,18 +38,25 @@
     </header>
     <!--ヘッダーの記述-->
 
-    <!--検索機能をつける-->
-    <div class="container">
-    <% if user_signed_in? %>
-      <h3>User search</h3>
-      <%= form_with(scope: :search, url: searchs_search_path, method: :get, local: true) do |f| %>
-        <%= f.label(:name, '名前') %>
-        <%= f.text_field :name %><!--nameとbookの情報もいる-->
-        <%= f.submit :search %>
-      <% end %>
-    <% end %>
-    </div>
     
+    <!--検索ふぉーむ-->
+    <div class="container">
+      <% if user_signed_in? %>
+      <div class="search-form">
+        <%= form_tag(searchs_search_path, method: :get) do %>
+          <%= text_field_tag 'search[content]' %>
+          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "Book" => "book" }) %>
+          <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+          <%= submit_tag '検索', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+
+
+    
+
+
+
 
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
