@@ -1,7 +1,7 @@
 class SearchsController < ApplicationController
   #def search
     #ViewのFormで取得したパラメータをモデルに渡す
-    #@users = User.search(params[:search][:name])
+    #@users = User.search(params[:search][:name]) #searchというパラメータを引っ張ってくる
     #Viewのformで取得したパラメータをモデルに渡す
    # if params[:name].presents?
     #  @users = User.search(params[:search])
@@ -16,6 +16,7 @@ class SearchsController < ApplicationController
     @content = params["search"]["content"]
     @how = params["search"]["how"]
     @datas = search_for(@how, @model, @content)
+    #@users = User.search(params[:search][:name])
   end
 
   private
